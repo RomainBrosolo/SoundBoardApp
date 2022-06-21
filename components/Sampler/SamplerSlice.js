@@ -38,16 +38,12 @@ export const SamplerSlice = createSlice({
     { id: 16, name: "Synth 1",uri: "synth1.wav", type: "default", color: "#9966ff"},
   ],
   reducers: {
-    addSampler: (state, action) => {
-      let id = state.length ? state[state.length - 1].id + 1 : 0;
-      return [
-        ...state,
-        {
-          id: id,
-          assetName: action.payload,
-        },
-      ];
-    },
+    /**
+		 * Edit sampler in the pad
+		 * @param {{}} state - redux state
+		 * @param {{}} action - reducer action. Payload must contain all new
+		 * sound data.
+		 */
     editSampler: (state, action) => {
       var item = {...action.payload.item};
       var color = action.payload.item.type == "recording" ? "#FFFFFF" : colorsTab[item.id-1].color;

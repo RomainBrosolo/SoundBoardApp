@@ -3,11 +3,18 @@ import { Button, Text, View, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { editSampler } from "./SamplerSlice";
 
-const EditItems = ({ id, item, navigation, index}) => {
+/**
+ * @param {*} item - item and properties item
+ * @param {*} index - item index in pad
+ */
+const EditItems = ({item, navigation, index}) => {
   const [sound, setSound] = React.useState();
 
   const dispatch = useDispatch();
 
+  /**
+	 * Edit sampler by redux store action
+	 */
   const editSamplerSelected = () => {
     dispatch(editSampler({index: index, item:item}));
     navigation.pop();

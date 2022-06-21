@@ -7,12 +7,12 @@ const SearchStack = createStackNavigator();
 
 const SamplerScreen = () => {
   return (
-    <SearchStack.Navigator initialRouteName="Sampler">
+    <SearchStack.Navigator initialRouteName="Pad">
       <SearchStack.Screen
-        name="Sampler"
+        name="Pad"
         component={SamplerView}
         options={{
-          title: "Sampler",
+          title: "Pad",
           headerStyle: {
             backgroundColor: "#242424",
           },

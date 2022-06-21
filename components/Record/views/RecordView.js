@@ -21,17 +21,26 @@ const RecordView = ({ navigation }) => {
       : undefined;
   }, [sound]);
 
+  /**
+	 * Add sound to Library by redux store action
+	 */
   const addToLibrary = () => {
     dispatch(addLibrary({ name: state.name, uri: uri }));
     navigation.navigate("Library", {});
   };
 
+  /**
+	 * Play default sound or record sound (uri)
+	 */
   const playSound = async() => {
     const { sound } = await Audio.Sound.createAsync({ uri: uri });
     setSound(sound);
     await sound.playAsync();
   }
 
+  /**
+	 * Start the recording sound using mic
+	 */
   const startRecord =  async() => {
     try {
       await Audio.requestPermissionsAsync();
@@ -50,6 +59,9 @@ const RecordView = ({ navigation }) => {
     }
   }
 
+  /**
+	 * Stop the recording sound using mic
+	 */
   const stopRecord = async() => {
     setRecording(null)
 		setRecording(false)

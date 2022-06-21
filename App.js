@@ -23,10 +23,10 @@ const App = () => {
                 case "Library":
                   iconName = focused ? "library" : "library-outline";
                   break;
-                case "Sampler":
+                case "Pad":
                   iconName = focused
-                    ? "musical-notes"
-                    : "musical-notes-outline";
+                    ? "keypad"
+                    : "keypad-outline";
                   break;
                 case "Search":
                   iconName = focused ? "search" : "search-outline";
@@ -45,7 +45,7 @@ const App = () => {
             inactiveBackgroundColor:"#2E2E2E"
           }}
         >
-          <Tabs.Screen name="Sampler" component={SamplerScreen}/>
+          <Tabs.Screen name="Pad" component={SamplerScreen}/>
           <Tabs.Screen name="Library" component={LibraryScreen}/>
           <Tabs.Screen name="Search" component={SearchScreen}/>
         </Tabs.Navigator>

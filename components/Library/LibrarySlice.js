@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const LibrarySlice = createSlice({
   name: "library",
+  /**
+	 * InitialState when application loaded
+	 */
   initialState: [
     { id: 1, name: "Snare 1", uri: "snare1.wav", type: "default"},
     { id: 2, name: "Snare 2", uri: "snare2.wav", type: "default"},
@@ -21,6 +24,12 @@ export const LibrarySlice = createSlice({
     { id: 16, name: "Synth 1",uri: "synth1.wav", type: "default"},
   ],
   reducers: {
+    /**
+		 * Add a new sound to the library
+		 * @param {{}} state - redux state
+		 * @param {{}} action - reducer action. Payload must contain all new
+		 * sound data.
+		 */
     addLibrary: (state, action) => {
       let id = state.length ? state[state.length - 1].id + 1 : 0;
       return [

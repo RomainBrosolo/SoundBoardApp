@@ -21,6 +21,9 @@ export default function SearchScreen() {
   const [sounds, setSounds] = useState([])
   const dispatch = useDispatch();
 
+  /**
+	 * Load sounds from freesound API
+	 */
   const searchSampler = () =>
     axios(url + state.name + key).then(async (data) => {
       if (data.data.results) {

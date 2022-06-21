@@ -5,19 +5,16 @@ import { removeLibrary } from "./LibrarySlice";
 import { Audio } from "expo-av";
 import defaultSound from '../../config'
 
+/**
+ * @param {*} id - item identification number
+ * @param {*} name - item name
+ * @param {*} uri - address of the sound recorded by the microphone
+ * @param {*} type - sound type of the item
+ */
+
 const LibraryItems = ({ id, name, uri, type }) => {
   const [sound, setSound] = React.useState();
   const dispatch = useDispatch();
-
-  const playSound = async () => {
-    const { sound } = await Audio.Sound.createAsync(type == "default" ? defaultSound[id - 1] : {uri:uri});
-    setSound(sound);
-    await sound.playAsync();
-  }
-
-  const removeItemLibrary = () => {
-    dispatch(removeLibrary(id));
-  };
 
   React.useEffect(() => {
     return sound
@@ -26,6 +23,22 @@ const LibraryItems = ({ id, name, uri, type }) => {
         }
       : undefined;
   }, [sound]);
+
+  /**
+	 * Play default sound or record sound
+	 */
+  const playSound = async () => {
+    const { sound } = await Audio.Sound.createAsync(type == "default" ? defaultSound[id - 1] : {uri:uri});
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  /**
+	 * Remove item library from Redux store
+	 */
+  const removeItemLibrary = () => {
+    dispatch(removeLibrary(id));
+  };
 
   return (
     <View style={styles.container}>
